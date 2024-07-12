@@ -1,0 +1,48 @@
+---
+layout: base.njk
+---
+
+<style>
+.book-body h1,
+.book-body h2 {
+  color: {{ meta.color }};
+}
+</style>
+<main role="main" id="main">
+  {% if chapterNumber %}
+  <div class="outer-wrap chapter-opener" style="background: {{ meta.color }}">
+    <div class="inner-wrap chapter-header">
+      <div class="chapter-num">{{ chapterNumber }}</div>
+      <h1 class="chapter-title">{{title}}</h1>
+    </div>
+  </div>
+  {% endif %}
+  {% set prev = collections.sortedChapters | getPreviousCollectionItem( page ) %}
+  {% set next = collections.sortedChapters | getNextCollectionItem( page ) %}
+  <div class="outer-wrap">
+    <div class="inner-wrap book-body">
+      {% if not chapterNumber %}
+        <h1>{{title}}</h1>
+      {% endif %}
+      {{ content | safe }}
+      <nav class="inner-nav repel">
+        <span>
+        {% if prev %}
+          <a href="{{ prev.url }}" class="chap-prev">
+            <svg aria-hidden="true" viewBox="0 0 27 65" width="27" height="65" xmlns="http://www.w3.org/2000/svg"><path d="M5.274 5.452 22 33 5.274 5.452ZM22 33 5 60l17-27Z" stroke="#979797" stroke-width="9" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {% if prev.data.title === prev.data.title.toUpperCase() %}{{ prev.data.title.toLowerCase() }}{% else %}{{ prev.data.title }}{% endif %}
+          </a>
+        {% endif %}
+        </span>
+        <span>
+        {% if next %}
+          <a href="{{ next.url }}" class="chap-next">
+          {% if next.data.title === next.data.title.toUpperCase() %}{{ next.data.title.toLowerCase() }}{% else %}{{ next.data.title }}{% endif %}
+          <svg aria-hidden="true" viewBox="0 0 27 65" width="27" height="65" xmlns="http://www.w3.org/2000/svg"><path d="M5.274 5.452 22 33 5.274 5.452ZM22 33 5 60l17-27Z" stroke="#979797" stroke-width="9" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        {% endif %}
+        </span>
+      </nav>
+    </div>
+  </div>
+</main>

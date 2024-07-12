@@ -1,0 +1,47 @@
+{
+  "name": "a-book-departs",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "ELEVENTY_ENV=development npx eleventy --serve",
+    "extract": "rimraf chapter/*.md && node ./util/processBook.mjs",
+    "production": "eleventy"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Wilto/writing.git"
+  },
+  "author": {
+    "name": "Mat Marquis",
+    "email": "mat@matmarquis.com",
+    "url": "http://matmarquis.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wilto/writing/issues"
+  },
+  "homepage": "https://github.com/Wilto/writing/",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0-alpha.13",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@andatoshiki/markdown-it-image-caption": "^0.0.2",
+    "clean-css": "^5.3.2",
+    "cross-env": "^7.0.3",
+    "make-dir-cli": "^2.0.0",
+    "markdown-it": "^14.1.0",
+    "sass": "^1.77.6",
+    "typescript": "^5.5.2"
+  },
+  "dependencies": {
+    "@11ty/eleventy-img": "^4.0.1",
+    "@11ty/eleventy-plugin-directory-output": "^1.0.1",
+    "@eatonfyi/dq": "github:eaton/dq",
+    "@jamshop/eleventy-filter-dump": "^1.0.4",
+    "@sveltia/cms": "^0.34.8",
+    "markdown-it-eleventy-img": "^0.10.2",
+    "rimraf": "^5.0.7"
+  }
+}

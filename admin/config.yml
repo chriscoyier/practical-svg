@@ -1,0 +1,22 @@
+backend:
+  name: git-gateway
+  branch: netlify
+
+media_folder: '../_src/chapter/image'
+public_folder: 'image'
+
+collections:
+  - name: 'chapter'
+    label: 'Chapters'
+    folder: '_src/chapter'
+    create: true
+    slug: 'index'
+    path: '{{title}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Permalink', name: 'permalink', widget: 'string', required: false }
+      - { label: 'Chapter Number', name: 'chapterNumber', widget: 'number', required: false }
+      - { label: 'Chapter Title', name: 'title', widget: 'string' }
+      - { label: 'Order', name: 'tocOrder', widget: 'number', required: false }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: false }

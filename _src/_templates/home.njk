@@ -1,0 +1,31 @@
+---
+layout: base.njk
+---
+
+<main role="main" id="main">
+	<div class="cover" style="background: {{ meta.color }};">
+		<div class="outer-wrap">
+			<div class="inner-wrap title-section">
+				<address class="author">{{ meta.creator }}</address>
+				<h1>{{ meta.title }}</h1>
+			</div>
+		</div>
+		<div class="ctas">
+			<a href="{{ collections.sortedChapters[0].page.url }}" class="btn-cta">Read for Free</a>
+		</div>
+	</div>
+</main>
+
+<footer class="footer">
+	<div class="outer-wrap">
+		<div class="inner-wrap">
+			<div class="pub-info">
+				<h3 class="meta-hed">{{ title }}</h3>
+				{{ content | safe }}
+			</div>
+			<small class="copyright">
+				<p>{{ meta.rights }}</p>
+			</small>
+		</div>
+	</div>
+</footer>

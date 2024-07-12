@@ -1,0 +1,122 @@
+[
+  {
+    "id": "navpoint20",
+    "playOrder": 20,
+    "navLabel": "Cover",
+    "content": "cover.xhtml"
+  },
+  {
+    "id": "navpoint1",
+    "playOrder": 1,
+    "navLabel": "More from A Book Apart",
+    "content": "practical-svg-ebook.xhtml"
+  },
+  {
+    "id": "navpoint2",
+    "playOrder": 2,
+    "navLabel": "Foreword",
+    "content": "practical-svg-ebook-3.xhtml"
+  },
+  {
+    "id": "navpoint3",
+    "playOrder": 3,
+    "navLabel": "Introduction",
+    "content": "practical-svg-ebook-4.xhtml"
+  },
+  {
+    "id": "navpoint4",
+    "playOrder": 4,
+    "navLabel": "Chapter 1. The Basics of Using SVG",
+    "content": "practical-svg-ebook-5.xhtml"
+  },
+  {
+    "id": "navpoint5",
+    "playOrder": 5,
+    "navLabel": "Chapter 2. Software",
+    "content": "practical-svg-ebook-6.xhtml"
+  },
+  {
+    "id": "navpoint6",
+    "playOrder": 6,
+    "navLabel": "Chapter 3. Building an Icon System",
+    "content": "practical-svg-ebook-7.xhtml"
+  },
+  {
+    "id": "navpoint7",
+    "playOrder": 7,
+    "navLabel": "Chapter 4. Build Tools",
+    "content": "practical-svg-ebook-8.xhtml"
+  },
+  {
+    "id": "navpoint8",
+    "playOrder": 8,
+    "navLabel": "Chapter 5. Optimizing SVG",
+    "content": "practical-svg-ebook-9.xhtml"
+  },
+  {
+    "id": "navpoint9",
+    "playOrder": 9,
+    "navLabel": "Chapter 6. Sizing and Scaling SVG",
+    "content": "practical-svg-ebook-10.xhtml"
+  },
+  {
+    "id": "navpoint10",
+    "playOrder": 10,
+    "navLabel": "Chapter 7. Animating SVG",
+    "content": "practical-svg-ebook-11.xhtml"
+  },
+  {
+    "id": "navpoint11",
+    "playOrder": 11,
+    "navLabel": "Chapter 8. Some Design Features",
+    "content": "practical-svg-ebook-12.xhtml"
+  },
+  {
+    "id": "navpoint12",
+    "playOrder": 12,
+    "navLabel": "Chapter 9. Fallbacks",
+    "content": "practical-svg-ebook-13.xhtml"
+  },
+  {
+    "id": "navpoint13",
+    "playOrder": 13,
+    "navLabel": "Conclusion",
+    "content": "practical-svg-ebook-14.xhtml"
+  },
+  {
+    "id": "navpoint14",
+    "playOrder": 14,
+    "navLabel": "Resources",
+    "content": "practical-svg-ebook-15.xhtml"
+  },
+  {
+    "id": "navpoint15",
+    "playOrder": 15,
+    "navLabel": "Acknowledgments",
+    "content": "practical-svg-ebook-16.xhtml"
+  },
+  {
+    "id": "navpoint16",
+    "playOrder": 16,
+    "navLabel": "References",
+    "content": "practical-svg-ebook-17.xhtml"
+  },
+  {
+    "id": "navpoint17",
+    "playOrder": 17,
+    "navLabel": "Index",
+    "content": "practical-svg-ebook-18.xhtml"
+  },
+  {
+    "id": "navpoint18",
+    "playOrder": 18,
+    "navLabel": "About the Author",
+    "content": "practical-svg-ebook-19.xhtml"
+  },
+  {
+    "id": "navpoint19",
+    "playOrder": 19,
+    "navLabel": "About A Book Apart",
+    "content": "practical-svg-ebook-20.xhtml"
+  }
+]
