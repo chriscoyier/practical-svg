@@ -4,6 +4,7 @@ chapterNumber: 8
 tocOrder: 11
 title: Chapter 8. Some Design Features
 ---
+
 BEYOND DRAWING and animating shapes, SVG has several features that can alter how the image ends up looking. We’ll review four of them.
 
 ## FILTERS
@@ -102,16 +103,16 @@ Patterns are repeated designs. Imagine a polka-dot dress or those baggy chef pan
 
 Here are two reasons SVG patterns are cool:
 
-* They make quick work of designs that would otherwise be too complex (too many points; too big a file).
-* They are made from other chunks of SVG!
+- They make quick work of designs that would otherwise be too complex (too many points; too big a file).
+- They are made from other chunks of SVG!
 
-Imagine a repeating site background (FIG 8.5). *Very nice*, you think to yourself, *but can I use SVG for that*? It seems like an awful lot of vector points; the file size is probably too big to be practical. That would be an understandable thought, but this file is only about one kilobyte. That’s because we made that complex-looking pattern from one tiny little shape (FIG 8.6).
+Imagine a repeating site background (FIG 8.5). _Very nice_, you think to yourself, _but can I use SVG for that_? It seems like an awful lot of vector points; the file size is probably too big to be practical. That would be an understandable thought, but this file is only about one kilobyte. That’s because we made that complex-looking pattern from one tiny little shape (FIG 8.6).
 
 ![Figure](image/8.5.png "FIG 8.5: That pattern in the background sure looks complex.")![Figure](image/shitty_chevron.png "FIG 8.6: This small chevron shape can become the basis of a pattern.")
 
 The `pattern` element provides the magic here. It’s an element designed to be used as a fill that will repeat over and over in a grid, like CSS `background-image`s can. A `pattern` is essentially a `rect`. It takes the same attributes: `x`, `y`, `width`, and `height`. The difference is that it doesn’t render all by itself, just like the `symbol` element we used back in Chapter 3! You give it an ID so other elements can reference it.
 
-Any SVG element that *does* render can use the `pattern` as a `fill`. Here, let’s fill the entire SVG area with circles:
+Any SVG element that _does_ render can use the `pattern` as a `fill`. Here, let’s fill the entire SVG area with circles:
 
 ```
 <svg width="100%" height="100%">
@@ -141,7 +142,7 @@ Or say we increase the radius of the circle beyond the edges, and position it ce
 
 ![Figure](image/8.9.png "FIG 8.9: Changing the size of our circle results in yet another different look for our pattern.")
 
-I’ve set up a playground for playing around with these  `pattern` attributes ([http://bkaprt.com/psvg/08-05/](http://bkaprt.com/psvg/08-05/)).
+I’ve set up a playground for playing around with these `pattern` attributes ([http://bkaprt.com/psvg/08-05/](http://bkaprt.com/psvg/08-05/)).
 
 Illustrator has a pretty good tool for working with patterns, and thankfully it also saves to SVG well! If you go to Object > Pattern > Make, the Pattern Options panel will open, and the interface will shift into pattern-editing mode (FIG 8.10).
 
@@ -161,8 +162,8 @@ If you’d like to play around more with `pattern`, SVGeneration is a pretty nea
 
 Clipping and masking are related concepts because they are both capable of hiding parts of an image. But the distinction between them can be confusing, so let’s clear that up right now:
 
-* Clipping is created from vector paths. Anything outside the path is hidden; anything inside is shown.
-* Masking is created from images. Black parts of the image mask hide; white parts show through. Shades of gray force partial transparency—imagine a black-to-white gradient over an image that “fades out” the image.
+- Clipping is created from vector paths. Anything outside the path is hidden; anything inside is shown.
+- Masking is created from images. Black parts of the image mask hide; white parts show through. Shades of gray force partial transparency—imagine a black-to-white gradient over an image that “fades out” the image.
 
 Clipping is done with the `clipPath` element. Any SVG elements you put inside of the element don’t render all by themselves (again, like `symbol`), but can be applied to other elements to clip them.
 
@@ -171,14 +172,14 @@ Let’s say we have a `polygon` of a star shape (FIG 8.12). And we also have a b
 ```
 <svg viewBox="0 0 1200 1000">
   <defs>
-     `<clipPath` `id="clip-star">`
+     <clipPath id="clip-star">
        <polygon points="..." />
      </clipPath>
   <defs>
-  `<g clip``-path="url(#clip-star)">`
+  <g clip-path="url(#clip-star)">
     <circle ... />
     <!-- all those cool circles -->
-  `</g``>`
+  </g>
 </svg>
 ```
 
@@ -190,7 +191,7 @@ FIG 8.14: The star shape being used as a `clipPath` for the `circle`s.
 
 In Illustrator, you can apply clipping paths like this by selecting multiple elements, making sure the topmost element is the clipping path you want to apply, and going to Object > Clipping Mask > Make. Note that Illustrator calls it a “mask” here, but it’s actually a clipping path.
 
-A clipping path is black and white in the sense that the part of the image being clipped is either hidden entirely or shown entirely. A mask is a bit different. A mask covers the entire area with an image of its own. Where that masking image is black, it *hides* the image below (and prevents user interaction as well, a sort of `pointer-events: none``;`). Where that masking image is white, it *reveals* the image below. Any grays in that masking image partially reveal the image, depending on their value.
+A clipping path is black and white in the sense that the part of the image being clipped is either hidden entirely or shown entirely. A mask is a bit different. A mask covers the entire area with an image of its own. Where that masking image is black, it _hides_ the image below (and prevents user interaction as well, a sort of `pointer-events: none;`). Where that masking image is white, it _reveals_ the image below. Any grays in that masking image partially reveal the image, depending on their value.
 
 Perhaps the easiest way to make this distinction is to picture a white-to-black gradient (FIG 8.15).This gradient can be created in SVG and applied to a `rect`, and then put inside a `mask` element. If we apply that `mask` to the same fun circles we were working with before, we get some nice results (FIG 8.16).
 
@@ -252,14 +253,14 @@ Hrynkow’s solution is to use two images. The photograph, and a black-and-white
 
 ## BEYOND BASIC FILLS AND STROKES
 
-Fills can be, and often are, solid colors: `fill="#F06D06"`, `fill="``rgba(255,0,0,0.6);"`, and the like. But a fill can also be a gradient, much like how in CSS a background can have a solid color or a gradient as part of `background-image`. Using the same syntax you would use if you were applying a pattern fill, you reference the ID of where you have defined the gradient:
+Fills can be, and often are, solid colors: `fill="#F06D06"`, `fill="rgba(255,0,0,0.6);"`, and the like. But a fill can also be a gradient, much like how in CSS a background can have a solid color or a gradient as part of `background-image`. Using the same syntax you would use if you were applying a pattern fill, you reference the ID of where you have defined the gradient:
 
 <path fill="url(#id)" ... >
 
 Here’s the definition for a lovely rainbow gradient from a Pen by yoksel ([http://bkaprt.com/psvg/08-08/](http://bkaprt.com/psvg/08-08/)):
 
 ```
-<linearGradient id="MyGradient" x1="0" y1="0" x2="100%" y2="0%"> 
+<linearGradient id="MyGradient" x1="0" y1="0" x2="100%" y2="0%">
   <stop offset="0%" stop-color="crimson" />
   <stop offset="10%" stop-color="purple" />
   <stop offset="10%" stop-color="red" />
@@ -291,7 +292,7 @@ Another cool thing you can do in SVG that you can’t do as intuitively in CSS i
 
 ![Figure](image/Screen_Shot_2016-02-20_at_10.58.34_AM.png "FIG 8.22: A pattern used as a fill for a stroke.")
 
-Those are nice thick `stroke-width="``30"` strokes there!
+Those are nice thick `stroke-width="30"` strokes there!
 
 ## COMBINING FEATURES
 
@@ -320,13 +321,14 @@ var drawing = Snap("#drawing"),
 star.animate({
   transform: "s0.5 r45 t25 25"
   // that special string means this:
-  // scale(1.5) rotate(35deg) translate(25px, 25px) 
+  // scale(1.5) rotate(35deg) translate(25px, 25px)
 }, 1000);
 ```
 
 Here’s another idea! Say you want an image to fade from black and white to color—not on hover, but you want the black and white of the left half to fade into color on the right half (FIG 8.23). We can do that by placing two images on top of each other. Could be any SVG, but if we want to use photographic images, those can be SVG too, with `<image xlink:href="">`. Since we’re going to use the image twice, let’s make a `symbol` so that we don’t repeat ourselves. Then we’ll apply the grayscale filter and the gradient mask to the second image. That second image will be on top, because SVG uses document order as paint order: whatever comes next in the source order is on top of what came before.
 
 ![Figure](image/8.23.png "FIG 8.23: A full-color image fades to grayscale by placing a grayscale-filtered copy on top and masking half of it with a gradient.")
+
 ```
 <svg width="500" height="366">
 

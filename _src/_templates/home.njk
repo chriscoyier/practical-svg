@@ -3,7 +3,7 @@ layout: base.njk
 ---
 
 <main role="main" id="main">
-	<div class="cover" style="background: {{ meta.color }};">
+	<div class="cover">
 		<div class="outer-wrap">
 			<div class="inner-wrap title-section">
 				<address class="author">{{ meta.creator }}</address>
@@ -20,12 +20,9 @@ layout: base.njk
 	<div class="outer-wrap">
 		<div class="inner-wrap">
 			<div class="pub-info">
-				<h3 class="meta-hed">{{ title }}</h3>
+				<h3>{{ title }}</h3>
 				{{ content | safe }}
 			</div>
-			<small class="copyright">
-				<p>{{ meta.rights }}</p>
-			</small>
 		</div>
 	</div>
 </footer>

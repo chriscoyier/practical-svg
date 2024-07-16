@@ -4,16 +4,17 @@ chapterNumber: 3
 tocOrder: 6
 title: Chapter 3. Building an Icon System
 ---
+
 WE’VE BEEN USING ICONS on websites since the dawn of...websites. Styles come and go, but the functionality of icons is here to stay. They aid in quick visual differentiation and assist in conveying meaning—even across languages and cultures.
 
 Take a look at a fairly simple page on [GitHub.com](http://GitHub.com) (FIG 3.1).
 
 All told, nearly two dozen icons there.
 
-We *could* make each of those icons an image, like  icon\_pencil.svg, and use them in our HTML like this:
+We _could_ make each of those icons an image, like `icon_pencil.svg`, and use them in our HTML like this:
 
 ```
-`<``li>`
+<li>
   <a href="">
     <img src="icons/icon_pencil.svg">
 ```
@@ -22,12 +23,12 @@ That works. There is nothing inherently wrong with using `img`. But it does mean
 
 ![Figure](image/github-icons.png "FIG 3.1: Screenshot of the New Issue page on GitHub.com with the icons highlighted.")
 
-When thinking about web performance, one of the first things to look at is reducing the number of network requests (sometimes called “HTTP requests,” the protocol of the web—we’ll call them network requests here). See Scott Jehl’s *Responsible Responsive Design* or Lara Hogan’s *Designing* *for Performance* ([http://bkaprt.com/psvg/03-01/](http://bkaprt.com/psvg/03-01/)) for more on this.
+When thinking about web performance, one of the first things to look at is reducing the number of network requests (sometimes called “HTTP requests,” the protocol of the web—we’ll call them network requests here). See Scott Jehl’s _Responsible Responsive Design_ or Lara Hogan’s _Designing_ _for Performance_ ([http://bkaprt.com/psvg/03-01/](http://bkaprt.com/psvg/03-01/)) for more on this.
 
-Ideally, we could make *all* of our icons a single network request. That’s one ingredient in building an icon system. And really, there are only two ingredients:
+Ideally, we could make _all_ of our icons a single network request. That’s one ingredient in building an icon system. And really, there are only two ingredients:
 
-* Serve icons as a single resource to make a website faster.
-* Make the system easy and convenient to use.
+- Serve icons as a single resource to make a website faster.
+- Make the system easy and convenient to use.
 
 In fact, as front-end web development has been maturing, we have been solving this problem over and over again. Reducing the number of requests boosts performance to such an extent that we're almost always willing to complicate development work in exchange. This is especially true on mobile, where latency is so much higher ([http://bkaprt.com/psvg/03-02/](http://bkaprt.com/psvg/03-02/)).
 
@@ -35,7 +36,7 @@ One classic way to tackle an icon system—cleverly cribbed from video game deve
 
 ![Figure](image/fig-3.2-noshadow.png "FIG 3.2: Example of a CSS sprite used by YouTube.com.")
 
-One big image means just one network request. To display one of the smaller images (like a single icon), we would make an element the exact size of the icon, use the large sprite image as the background-image in CSS, and then adjust the  `background-position` to reveal only the smaller image.
+One big image means just one network request. To display one of the smaller images (like a single icon), we would make an element the exact size of the icon, use the large sprite image as the background-image in CSS, and then adjust the `background-position` to reveal only the smaller image.
 
 The method is clever and effective. We can do the same thing with SVG: lay out a bunch of vector graphics on a single artboard, export it as one big SVG file, and do the same background shifting trickery.
 
@@ -74,7 +75,7 @@ Then we’ll wrap those paths in `g` tags. The `g` tag in SVG is like a `div` in
 </svg>
 ```
 
-Then we’ll wrap all of that in a `defs` tag. A `defs` tag essentially says, “SVG, don’t try to actually draw any of the stuff inside this tag; I’m just defining it to use later.” The SVG element itself will still try to render, though, so let’s make sure it doesn’t do that by shrinking it to nothing. Using `width="``0"` and `height="0"` or `display="none"` is better than using CSS to hide the SVG; CSS takes longer to process, and `style="display: none;"` can have weird consequences, like failing to work at all on some iOS devices ([http://bkaprt.com/psvg/03-03/](http://bkaprt.com/psvg/03-03/)).
+Then we’ll wrap all of that in a `defs` tag. A `defs` tag essentially says, “SVG, don’t try to actually draw any of the stuff inside this tag; I’m just defining it to use later.” The SVG element itself will still try to render, though, so let’s make sure it doesn’t do that by shrinking it to nothing. Using `width="0"` and `height="0"` or `display="none"` is better than using CSS to hide the SVG; CSS takes longer to process, and `style="display: none;"` can have weird consequences, like failing to work at all on some iOS devices ([http://bkaprt.com/psvg/03-03/](http://bkaprt.com/psvg/03-03/)).
 
 ```
 <svg width="0" height="0" class="hide">
@@ -90,7 +91,7 @@ Then we’ll wrap all of that in a `defs` tag. A `defs` tag essentially says, �
 </svg>
 ```
 
-The chunk of SVG we’ve just built is our SVG icon system. We’re going to be talking about this chunk of SVG a lot in this book, so let’s give it a name: an *SVG* *sprite*.
+The chunk of SVG we’ve just built is our SVG icon system. We’re going to be talking about this chunk of SVG a lot in this book, so let’s give it a name: an _SVG_ _sprite_.
 
 As long as this SVG sprite is present in the HTML of our page, we can do this anywhere we want to draw one of those icons:
 
@@ -101,7 +102,7 @@ As long as this SVG sprite is present in the HTML of our page, we can do this an
 </svg>
 ```
 
-This code snippet will draw that icon onto the page, just like an `img` would. One new thing here is the `viewBox` attribute, which we’ll get to soon. The other new element is `use xlink:href`, which essentially says, “Go find the chunk of SVG that has this ID and replace me with a clone of it.” That’s a beautiful thing right there. We can use `xlink:``href` to draw any bit of SVG anywhere we like and repeat it as many times as we want without repeating actual drawing code.
+This code snippet will draw that icon onto the page, just like an `img` would. One new thing here is the `viewBox` attribute, which we’ll get to soon. The other new element is `use xlink:href`, which essentially says, “Go find the chunk of SVG that has this ID and replace me with a clone of it.” That’s a beautiful thing right there. We can use `xlink:href` to draw any bit of SVG anywhere we like and repeat it as many times as we want without repeating actual drawing code.
 
 You can see this in action in the footer on a previous design of CSS-Tricks, which had a `use`\-based icon system (FIG 3.3).
 
@@ -114,8 +115,8 @@ These icons are properly accessible. They are nicely semantic. And—perhaps bes
   /\* make it match the font-size \*/
   width: 1em;
   height: 1em;
-  /\* make it match the text color \*/ 
-  fill: currentColor; 
+  /\* make it match the text color \*/
+  fill: currentColor;
 }
 ```
 
@@ -147,7 +148,7 @@ Our chunk of SVG where we build the icon system now looks like this:
 </svg>
 ```
 
-And then, when we go to draw the icon somewhere on our page, we can *do less* and *avoid a lot of repetition* if the icon is used in multiple places:
+And then, when we go to draw the icon somewhere on our page, we can _do less_ and _avoid a lot of repetition_ if the icon is used in multiple places:
 
 ```
 <svg class="icon icon-twitter">
@@ -161,9 +162,9 @@ This still might look like a lot of code just to draw an icon, but it’s compar
 
 Let’s look at another example of real-world usage. The curvy tabs on a previous design of CSS-Tricks would have been difficult to do in CSS without substantial trickery (FIG 3.5). And speaking of trickery, I’ve seen some pretty over-the-top demos of drawings using just HTML and CSS. There is, of course, nothing wrong with a good bit of fun and experimentation, but I usually can’t help but think, “You know, this is what SVG is for.”
 
-With inline SVG, we just define that shape as a `path` once, make it a `symbol`, and `use` it over and over as needed, even altering the style. And even though we were talking about an icon system here, note that this idea works for *any* SVG you want to use as part of a system.
+With inline SVG, we just define that shape as a `path` once, make it a `symbol`, and `use` it over and over as needed, even altering the style. And even though we were talking about an icon system here, note that this idea works for _any_ SVG you want to use as part of a system.
 
-![Figure](image/Screen_Shot_2016-01-17_at_10.41.12_AM.png "FIG 3.5: Each of these curved tabs is the same path used over and over again with  a different fil`l.")
+![Figure](image/Screen_Shot_2016-01-17_at_10.41.12_AM.png "FIG 3.5: Each of these curved tabs is the same path used over and over again with a different fil`l.")
 
 ## A NOTE ABOUT use AND CSS STYLING
 
@@ -247,7 +248,7 @@ Often, we work with HTML in the form of templates—perhaps our CMS gives us tem
 
 Well, putting the SVG sprite at the top of the document (that is, right after the opening `body` tag) is the least buggy way to proceed, because some browsers (like Safari on iOS 8.1) won’t render the `use` at all if the sprite is defined after it. That’s a shame, because putting the sprite at the bottom of the document would be better for performance, in the spirit of “deferred loading” of things deemed less important than the primary content.
 
-Also, using `file``_get_contents()` is safer than `include()` in PHP, as XML like `<?xml` will have trouble going through the PHP parser. Say you’re using PHP:
+Also, using `file_get_contents()` is safer than `include()` in PHP, as XML like `<?xml` will have trouble going through the PHP parser. Say you’re using PHP:
 
 ```
 </head>
@@ -263,13 +264,13 @@ Also, using `file``_get_contents()` is safer than `include()` in PHP, as XML lik
   </a>
 ```
 
-The advantage of doing it this way is that there are *zero* network requests for the icons. That’s pretty nice!
+The advantage of doing it this way is that there are _zero_ network requests for the icons. That’s pretty nice!
 
 But there are a couple of downsides to this approach. It isn’t perfectly compatible with server-side HTML caching. If the site does that, every single page will have this identical chunk of SVG in it, which isn’t very efficient (“bloated” cache, you could call it). Plus, browsers will need to read and parse that whole chunk of SVG with every single page load, before it gets to the (arguably more important) content below.
 
 Including the sprite server-side also doesn’t take advantage of browser caching very well. Browser caching happens when a browser holds onto a file so a network request doesn’t need to be made for it. If we move our chunk of SVG into a separate file, we can tell the browser to cache it, and we’ve solved both problems.
 
-We can make sure the browser caches the sprite by putting the file path in the `xlink:href` attribute of the `use` element. That’s right, it doesn’t have to be just an `#identifier`; it can be a file path (or *external source*):
+We can make sure the browser caches the sprite by putting the file path in the `xlink:href` attribute of the `use` element. That’s right, it doesn’t have to be just an `#identifier`; it can be a file path (or _external source_):
 
 ```
 <svg class="icon icon-twitter">
@@ -304,7 +305,7 @@ There’s something you need to keep in mind when it comes to `use` with an exte
 
 ## THE FUTURE: FRAGMENT IDENTIFIERS AND HTTP/2
 
-You know how we’ve been referencing icons in the `use` element with the hash symbol, like `#icon-``twitter`? That’s a *fragment identifier*. Fragment identifiers are so useful that they are essentially the basis for this entire icon system trip we’re on. But SVG fragment identifiers are coming to HTML and CSS as well!
+You know how we’ve been referencing icons in the `use` element with the hash symbol, like `#icon-twitter`? That’s a _fragment identifier_. Fragment identifiers are so useful that they are essentially the basis for this entire icon system trip we’re on. But SVG fragment identifiers are coming to HTML and CSS as well!
 
 For instance, in an image tag in HTML:
 
@@ -326,7 +327,7 @@ Speaking of one-request, even that is destined to be a relic of the past. HTTP/2
 
 ## MAKING use WORK WITH AN EXTERNAL SOURCE
 
-No version of Internet Explorer (and some older versions of WebKit browsers) currently supports file paths in  `use xlink:``href=""`. These browsers support `use` just fine, but only with inline SVG and fragment identifiers (e.g., `#hash`), not URLs. Luckily, there’s a way around that!
+No version of Internet Explorer (and some older versions of WebKit browsers) currently supports file paths in `use xlink:href=""`. These browsers support `use` just fine, but only with inline SVG and fragment identifiers (e.g., `#hash`), not URLs. Luckily, there’s a way around that!
 
 To polyfill this external reference feature (that is, make it work in browsers where it doesn’t), try Jonathan Neal’s SVG for Everybody script ([http://bkaprt.com/psvg/03-04/](http://bkaprt.com/psvg/03-04/)). You could include the script on the page like this:
 
@@ -347,7 +348,7 @@ Here’s a common example. You put this in your HTML:
 </svg>
 ```
 
-If SVG for Everybody determines that the current browser supports this, it leaves it alone. If SVG for Everybody determines that the current browser does *not* support this, it converts the earlier code into this:
+If SVG for Everybody determines that the current browser supports this, it leaves it alone. If SVG for Everybody determines that the current browser does _not_ support this, it converts the earlier code into this:
 
 ```
 <svg class="logo">
@@ -363,8 +364,8 @@ To perform this sleight of hand, SVG for Everybody tests the browser’s User-Ag
 
 The result will be either true or false, generally matching older versions of Internet Explorer and WebKit-based browsers. If it comes back true, the script will do the rest of its magic. I don’t think the test is so offensive in this particular case because:
 
-* A false positive would mean it still works (`use` gets replaced).
-* A false negative doesn’t necessarily mean the browser doesn’t support the external linking.
+- A false positive would mean it still works (`use` gets replaced).
+- A false negative doesn’t necessarily mean the browser doesn’t support the external linking.
 
 But by no means is it perfect. The false negative scenario can pose a problem sometimes. For instance, Android 3 through 4.2 could benefit from this script, but it returns a false negative, so the script doesn’t do anything. Bummer.
 
@@ -372,7 +373,7 @@ But by no means is it perfect. The false negative scenario can pose a problem so
 
 Another solution is to do an Ajax request for the SVG sprite and drop it onto the page. This is a nice fix, as the SVG sprite can still be browser cached, and it completely eliminates the external asset issue. It’s just a little trickier than you might think.
 
-Elements in the DOM have their own *namespace* that essentially tells the browser how to handle them. SVG and HTML have different namespaces. When HTML is read and parsed by the browser and it finds an `svg` tag, it automatically applies the correct namespace. But if you just append an `svg` tag into the DOM yourself, that SVG won’t have the correct namespace by default, and thus it won’t behave like an SVG element.
+Elements in the DOM have their own _namespace_ that essentially tells the browser how to handle them. SVG and HTML have different namespaces. When HTML is read and parsed by the browser and it finds an `svg` tag, it automatically applies the correct namespace. But if you just append an `svg` tag into the DOM yourself, that SVG won’t have the correct namespace by default, and thus it won’t behave like an SVG element.
 
 To create a new SVG element in JavaScript with the proper namespace, you need to do something like this:
 
@@ -419,11 +420,11 @@ $.get("svg/sprite.svg", function(data) {
 
 We can see that the caching is in effect by looking at the Cache-Control header of the XHR request for the SVG file (FIG 3.9). Lookin’ good.
 
-![Figure](image/3.8.png "FIG 3.8: It’s working! Cross-browser examples of SVG inserted via Ajax (http://bkaprt.com/psvg/03-05/). Shown in OS X Chrome, Windows 7 / IE 9, and Android 4.0 Native Browser.")![Figure](image/3.9.png "FIG 3.9: Proof of proper browser cache headers being served. Note the  Cache-Control: max-age=31536000.")![Figure](image/12.png "FIG 3.10: When you compare an icon font to an inline SVG icon system point for point, the SVG system emerges the clear winner.")
+![Figure](image/3.8.png "FIG 3.8: It’s working! Cross-browser examples of SVG inserted via Ajax (http://bkaprt.com/psvg/03-05/). Shown in OS X Chrome, Windows 7 / IE 9, and Android 4.0 Native Browser.")![Figure](image/3.9.png "FIG 3.9: Proof of proper browser cache headers being served. Note the Cache-Control: max-age=31536000.")![Figure](image/12.png "FIG 3.10: When you compare an icon font to an inline SVG icon system point for point, the SVG system emerges the clear winner.")
 
 ## SVG VS. THAT OTHER ICON SYSTEM: ICON FONTS
 
-The reason I’m taking the time to go through all of this is because inline SVG really does make for an awesome icon system. It’s even better, dare I say, than another extremely popular way to approach an icon system: icon fonts. An icon font is a custom font file that you load in CSS through an `@font``-face` declaration; the font’s glyphs are actually icons.
+The reason I’m taking the time to go through all of this is because inline SVG really does make for an awesome icon system. It’s even better, dare I say, than another extremely popular way to approach an icon system: icon fonts. An icon font is a custom font file that you load in CSS through an `@font-face` declaration; the font’s glyphs are actually icons.
 
 Icon fonts have one distinct advantage over an inline SVG icon system: they are supported in even really old versions of Internet Explorer, which only supports SVG in versions 9 and up. Every other comparable feature between the two comes down squarely on the side of SVG ([http://bkaprt.com/psvg/03-06/](http://bkaprt.com/psvg/03-06/)).
 
