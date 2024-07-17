@@ -147,6 +147,9 @@ figure {
     margin: 2em;
   }
 }
+.modal::backdrop {
+  background: #6185c3;
+}
 
 .mininav {
   display: flex;

@@ -3,45 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="The book 'Practical SVG' published by Chris Coyier. It's about SVG ya dweebs.">
 
-		<meta property="og:site_name" content="{{ data.title }}">
-		<link rel="canonical" href="{{ data.url }}">
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📘</text></svg>">
 
 		<title>{{ data.title }}</title>
-		<meta name="description" content="{{ data.description }}">
 
-		<meta name="application-name" content="{{ data.title }}">
-		<link rel="manifest" href="/webappmanifest.json">
-
-		<!-- Icons, platform-specific theme stuff, etc.: -->
-		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/_assets/img/icon-152.png">
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/_assets/img/icon-144.png">
-		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/_assets/img/icon-120.png">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/_assets/img/icon-114.png">
-
-		<meta name="msapplication-TileImage" content="/_assets/img/icon-144.png">
-		<meta name="theme-color" content="#12073f">
-		<link rel="icon" type="image/png" href="/_assets/img/icon-32.png" sizes="32x32">
-
-		<!-- Half my site’s transfer is in `meta` nonsense. -->
-		<script type="application/ld+json">
-			{
-				"@context": "http://schema.org",
-				"@type": "Organization",
-				"url": "{{ data.url }}",
-				"title": "{{ bookMeta.title }}",
-				"author_name": "{{ bookMeta.creator }}",
-				"logo": "{{ data.url }}/_assets/img/card.gif"
-			}
-		</script>
-
-		<meta property="og:site_name" content="{{ bookMeta.title }}">
-		<meta property="og:title" content="{{ data.title }}">
-		<meta property="og:url" content="{{ data.url }}">
-		<meta property="og:image" content="{{ data.url }}/_assets/img/card.gif">
-		<meta property="og:image:alt" content="{{ data.description }}">
-
-		<meta name="author" content="{{ output-directory.data.meta.creator }}">
 		{% set css %}
 			{% include "../_assets/css/globals.scss" %}
 			{% include "../_assets/css/layout.scss" %}
@@ -50,20 +17,8 @@
 		<style>
 			{{ css | cssmin | safe }}
 		</style>
-		<style>
-			.book-body h2 {
-				color: {{ meta.color }};
-			}
-			.book-body a {
-				color: {{ meta.color }};
-			}
-			.modal::backdrop {
-				background: {{ meta.color }};
-			}
-			</style>
-
-			<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 	</head>
+
 	<body>
 		<header class="masthead">
 			<div class="mast-wrap repel">
