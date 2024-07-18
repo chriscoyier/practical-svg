@@ -1,97 +1,66 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
-	margin: 0;
+  margin: 0;
 }
 
 .sr-only {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	display: inline-block;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  display: inline-block;
 }
 .sr-only:focus,
 .sr-only:active,
 .sr-only:hover {
-	clip: auto;
-	height: auto;
-	margin: 0;
-	overflow: visible;
-	position: static;
-	width: auto;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
 
 .a11y-only {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 .a11y-only.focusable:active,
 .a11y-only.focusable:focus {
-	clip: auto;
-	height: auto;
-	margin: 0;
-	overflow: visible;
-	position: static;
-	width: auto;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
 [aria-hidden="true"] {
-	display: none;
+  display: none;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 a {
-	color: #cb4335;
-	transition: color .15s linear, -webkit-text-fill-color .15s linear, text-decoration-color .5s linear;
-	text-decoration: none;
-	border-bottom: 1px solid  #12073f;
+  color: #2084bd;
+  text-decoration: none;
+  border-bottom: 1px solid #12073f;
 }
-a:hover {
-	border-bottom-color: #cb4335;
-	color: #6d252e;
-	cursor: pointer;
-	text-decoration: none;
+a:hover,
+a:focus {
+  border-bottom-color: #2084bd;
 }
-@supports( text-decoration-color: #12073f ) {
-	a {
-		text-decoration: underline;
-		text-decoration-color: #12073f;
-		border-bottom: none;
-		transition: color text-decoration-color .35s linear, text-decoration-color .5s linear;
-	}
-	a:hover {
-		text-decoration: underline;
-		text-decoration-color: #cb4335;
-		border-bottom: none;
-	}
-	@media( prefers-color-scheme: dark ) {
-		a {
-			color: #cb4335;
-			transition: color .15s linear, -webkit-text-fill-color .15s linear, text-decoration-color .5s linear;
-			text-decoration: underline;
-			text-decoration-color: rgba(25,25,25,1);
-
-		}
-		a:hover {
-			text-decoration-color: rgba(25,25,25,.5);
-			cursor: pointer;
-			text-decoration: none;
-		}
-	}
-}
-
