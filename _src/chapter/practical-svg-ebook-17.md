@@ -2,6 +2,7 @@
 title: REFERENCES
 tocOrder: 16
 ---
+
 Shortened URLs are numbered sequentially; the related long URLs are listed below for reference.
 
 ## Introduction
@@ -12,7 +13,7 @@ Shortened URLs are numbered sequentially; the related long URLs are listed below
 
 00-03 [http://5by5.tv/webahead/67](http://5by5.tv/webahead/67)
 
-00-04 [https://en.wikipedia.org/wiki/Broadband#cite\_note-20](https://en.wikipedia.org/wiki/Broadband#cite_note-20)
+00-04 [https://en.wikipedia.org/wiki/Broadband#cite_note-20](https://en.wikipedia.org/wiki/Broadband#cite_note-20)
 
 00-05 [https://developers.google.com/speed/webp/faq](https://developers.google.com/speed/webp/faq)
 
@@ -124,7 +125,7 @@ Shortened URLs are numbered sequentially; the related long URLs are listed below
 
 07-03 [https://css-tricks.com/svg-animation-on-css-transforms/](https://css-tricks.com/svg-animation-on-css-transforms/)
 
-07-04 [http://en.wikipedia.org/wiki/Synchronized\_Multimedia\_Integration\_ Language](http://en.wikipedia.org/wiki/Synchronized_Multimedia_Integration_Language)
+07-04 [http://en.wikipedia.org/wiki/Synchronized_Multimedia_Integration_Language](http://en.wikipedia.org/wiki/Synchronized_Multimedia_Integration_Language)
 
 07-05 [http://codepen.io/chriscoyier/pen/9b1b826a238a601b4122f79b7017c443](http://codepen.io/chriscoyier/pen/9b1b826a238a601b4122f79b7017c443)
 
@@ -240,11 +241,11 @@ Shortened URLs are numbered sequentially; the related long URLs are listed below
 
 11-10 [http://codepen.io/collection/svfAa](http://codepen.io/collection/svfAa)
 
-11-11 [https://www.owasp.org/images/0/03/Mario\_Heiderich\_OWASP\_Sweden\_The\_image\_that\_called\_me.pdf](https://www.owasp.org/images/0/03/Mario_Heiderich_OWASP_Sweden_The_image_that_called_me.pdf)
+11-11 [https://www.owasp.org/images/0/03/Mario_Heiderich_OWASP_Sweden_The_image_that_called_me.pdf](https://www.owasp.org/images/0/03/Mario_Heiderich_OWASP_Sweden_The_image_that_called_me.pdf)
 
 11-12 [http://caniuse.com/#search=svg](http://caniuse.com/#search=svg)
 
-11-13 [https://www.youtube.com/watch?v=SeLOt\_BRAqc](https://www.youtube.com/watch?v=SeLOt_BRAqc)
+11-13 [https://www.youtube.com/watch?v=SeLOt_BRAqc](https://www.youtube.com/watch?v=SeLOt_BRAqc)
 
 11-14 [https://github.com/emilbjorklund/svg-weirdness/issues](https://github.com/emilbjorklund/svg-weirdness/issues)
 

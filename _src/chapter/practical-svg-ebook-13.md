@@ -4,6 +4,7 @@ chapterNumber: 9
 tocOrder: 12
 title: Chapter 9. Fallbacks
 ---
+
 WE’VE TALKED ABOUT HOW browser support for SVG is pretty good, but not ubiquitous. IE 8 and Android 2.3 don’t support it at all, and I’d say those are pretty reasonable browser-support targets for a lot of websites. Does that mean we give up on using SVG for sites that need to accommodate them? Absolutely not. We don’t need to punish newer browsers for older browsers’ lack of support, just as we don’t need to punish older browsers with broken design and functionality.
 
 The fallback approach that will work for you depends on how you are using SVG. But first things first.
@@ -28,7 +29,7 @@ Then replace that `src` with something that will be supported, like dog.png. Tha
 
 ```
   <img src="images/dog.svg" alt="dog">
-  <!-- 
+  <!--
      this will be turned into this
          <img src="images/dog.png" alt="dog">
       if the browser doesn’t support SVG this way -->
@@ -55,7 +56,7 @@ Um, `document.implementation.hasFeature`? What is this wizardry? Is there some n
 
 Turns out this unusual `hasFeature` thing is no dream come true. It’s actually quite old and largely deprecated, but it’s still interesting. `document.implementation.hasFeature` returns true for everything, except when you use it exactly as shown above, in which case it returns true or false perfectly in all known browsers based on whether that browser supports SVG-as-`img` or not. So in case you need this information, now you know that it’s quite easy to get.
 
-And why might you need to know if a browser supports SVG-as-`img` in JavaScript? Perhaps you’ll use that information to decide if you’re going to load additional scripts to help with a fallback. Or you’ll use it as part of a test to make a general determination about what kind of experience your site is going to deliver to that browser, a technique now known as *mustard-cutting* ([http://bkaprt.com/psvg/09-02/](http://bkaprt.com/psvg/09-02/)).
+And why might you need to know if a browser supports SVG-as-`img` in JavaScript? Perhaps you’ll use that information to decide if you’re going to load additional scripts to help with a fallback. Or you’ll use it as part of a test to make a general determination about what kind of experience your site is going to deliver to that browser, a technique now known as _mustard-cutting_ ([http://bkaprt.com/psvg/09-02/](http://bkaprt.com/psvg/09-02/)).
 
 You could easily build your own SVG-as-`img` fallback system:
 
@@ -85,7 +86,7 @@ That’s what SVGMagic helps you do ([http://bkaprt.com/psvg/09-03/](http://bkap
 
 We still haven’t found a way around the double-download issue, so let’s do that next.
 
-One way of circumventing it is to use the `picture` element. The `picture` element is often thought of as a solution for responsive images (serving differently *sized* images as needed), but it can also serve different image *types* depending on support.
+One way of circumventing it is to use the `picture` element. The `picture` element is often thought of as a solution for responsive images (serving differently _sized_ images as needed), but it can also serve different image _types_ depending on support.
 
 Here’s how that works in HTML:
 
@@ -96,13 +97,13 @@ Here’s how that works in HTML:
 </picture>
 ```
 
-If the browser supports SVG this way, `source` will be used; otherwise, the fallback PNG in the `img` tag will be served, without the double-download. It’s pretty great to have a fallback solution like this right in HTML. The rub is that the browser *also* needs to support `picture`, which is so new that any browser that supports it also supports SVG.
+If the browser supports SVG this way, `source` will be used; otherwise, the fallback PNG in the `img` tag will be served, without the double-download. It’s pretty great to have a fallback solution like this right in HTML. The rub is that the browser _also_ needs to support `picture`, which is so new that any browser that supports it also supports SVG.
 
-That doesn’t eliminate this solution from the running, though, thanks to Picturefill, a script that makes `picture` work in any browser ([http://bkaprt.com/psvg/09-04/](http://bkaprt.com/psvg/09-04/)). This sort of script is called a *polyfill*, by the way. When you load up Picturefill, the `picture` syntax will work great, delivering SVG to supporting browsers and the fallback otherwise.
+That doesn’t eliminate this solution from the running, though, thanks to Picturefill, a script that makes `picture` work in any browser ([http://bkaprt.com/psvg/09-04/](http://bkaprt.com/psvg/09-04/)). This sort of script is called a _polyfill_, by the way. When you load up Picturefill, the `picture` syntax will work great, delivering SVG to supporting browsers and the fallback otherwise.
 
 As a nice side bonus, you can use the `picture` syntax to deliver differently-sized fallback images, if necessary. For instance, you might want to serve a PNG that is 800 pixels wide for a desktop IE 8, but that would be a waste of bandwidth for a non-Retina iPhone, so you’d like to serve a 320-pixel version there. That’s all possible with `picture`.
 
-There is a catch though, beyond loading the 7 KB script. The reason double-downloads happen in the first place is because of that `img src` in the HTML. Browsers do what is called *prefetching*—they zoom through a page looking for resources they can start downloading right away. Prefetching is a good thing, because it helps make the web fast. But we have no control over it. In the `picture` syntax we looked at, notice this part: `img src="graph.png"`. Prefetching will catch that and download graph.png, whether it ends up being used or not.
+There is a catch though, beyond loading the 7 KB script. The reason double-downloads happen in the first place is because of that `img src` in the HTML. Browsers do what is called _prefetching_—they zoom through a page looking for resources they can start downloading right away. Prefetching is a good thing, because it helps make the web fast. But we have no control over it. In the `picture` syntax we looked at, notice this part: `img src="graph.png"`. Prefetching will catch that and download graph.png, whether it ends up being used or not.
 
 In a browser that natively supports `picture`, the prefetcher will be smart enough not to do that. But we can’t count on that (hence the polyfill). To solve this, we can just skip the `src` and make the markup more like this:
 
@@ -122,7 +123,7 @@ This method is pretty great, because it relies on some simple sleight of hand ri
 ```
 .my-element {
   background-image: url(fallback.png);
-  background-image: 
+  background-image:
     linear-gradient(transparent, transparent),
     url(image.svg);
 }
@@ -132,7 +133,7 @@ It does the trick because of some serendipitous overlap in features that browser
 
 Because this is so straightforward, it’s kind of tempting to exploit it for images used in HTML as well. After all, it would be pretty easy to just use a `div` with a background instead of an image. The danger here is that background images aren’t content. If the content here were ever syndicated through email or RSS, you’d lose the background images entirely. Not to mention that that usage is semantically incorrect, and you’d have to take extra steps to ensure accessibility. There is no `alt` text for background images.
 
-Another possibility here would be to run the JavaScript test for SVG-as-`img` (the support is identical for background images), add a class to to the `html` element (something like  `<html class="no-svg">`) and then:
+Another possibility here would be to run the JavaScript test for SVG-as-`img` (the support is identical for background images), add a class to to the `html` element (something like `<html class="no-svg">`) and then:
 
 ```
 .my-element {
@@ -156,28 +157,25 @@ This method is forward-thinking in the sense that down the road, you can decide 
 Here’s a possible approach, one I quite like:
 
 1. Use inline SVG normally:
-    ```
-    <svg class="icon icon-cart" xmlns="http://www.w3.org/2000/svg">
-      <use xlink:href="#icon-cart"></use>
-    </svg>
-    ```
-    
+   ```
+   <svg class="icon icon-cart" xmlns="http://www.w3.org/2000/svg">
+     <use xlink:href="#icon-cart"></use>
+   </svg>
+   ```
 2. Make an inline SVG test in JavaScript:
-    ```
-    var supportsSvg = function() {
-      var div = document.createElement("div");
-      div.innerHTML = "<svg/>";
-      return (div.firstChild && div.firstChild.namespaceURI) == "http://www.w3.org/2000/svg";
-    };
-    ```
-    
+   ```
+   var supportsSvg = function() {
+     var div = document.createElement("div");
+     div.innerHTML = "<svg/>";
+     return (div.firstChild && div.firstChild.namespaceURI) == "http://www.w3.org/2000/svg";
+   };
+   ```
 3. If the browser doesn’t support inline SVG, add a class name to the `html` element:
-    ```
-    if (supportsSvg()) {
-      document.documentElement.className += "no-svg";
-    };
-    ```
-    
+   ```
+   if (supportsSvg()) {
+     document.documentElement.className += "no-svg";
+   };
+   ```
 4. Use that class name to set a background image on the `svg`:
 
 ```
@@ -211,7 +209,7 @@ Imagine a Close button that you hope will appear simply as a cross shape: **×**
 </button>
 ```
 
-Now, if you run the JavaScript test we just went over and see that the browser *does* support inline SVG, inject it and replace the `span`.
+Now, if you run the JavaScript test we just went over and see that the browser _does_ support inline SVG, inject it and replace the `span`.
 
 ```
 if (supportsSvg()) {
@@ -244,10 +242,10 @@ These aren’t the only SVG fallbacks you’ll see out there. I’m intentionall
 
 Remember these rules of thumb:
 
-* If you see `img src=""` anywhere in the HTML, that *will* trigger a download. If you try to replace that source with JavaScript, that will trigger *another* download.
-* If you see a CSS `background-image` on a selector that matches anything in the HTML, that *will* trigger a download.
-* Double-downloads are awful for performance. Avoid them if possible.
-* Ideally, circumvent situations where every single fallback is a separate network request.
+- If you see `img src=""` anywhere in the HTML, that _will_ trigger a download. If you try to replace that source with JavaScript, that will trigger _another_ download.
+- If you see a CSS `background-image` on a selector that matches anything in the HTML, that _will_ trigger a download.
+- Double-downloads are awful for performance. Avoid them if possible.
+- Ideally, circumvent situations where every single fallback is a separate network request.
 
 ## MAKING SVG ACCESSIBLE
 
@@ -263,7 +261,7 @@ I enjoy this one—it serves as a good reminder of the breadth of accessibility 
 
 ### Use inline SVG
 
-I’ve attempted to extol the virtues of inline SVG throughout this book—and I’m not done yet! Inline SVG allows *assistive technologies* (AT) like screen readers more access to information than is possible using SVG any other way.
+I’ve attempted to extol the virtues of inline SVG throughout this book—and I’m not done yet! Inline SVG allows _assistive technologies_ (AT) like screen readers more access to information than is possible using SVG any other way.
 
 ### Use title and desc
 
