@@ -96,7 +96,7 @@ What if you want to throw aspect ratio out the window and have SVG scale to the 
 <svg preserveAspectRatio="none" viewBox="0 0 100 100">
 ```
 
-![Figure](image/Screen_Shot_2016-01-23_at_1.05.45_PM.png "FIG 6.7: Example of preserveAspectRatio="none". Poor little buggers.")
+![Figure](image/poor-buggers.png "FIG 6.6: preserveAspectRatio values and the CSS properties they are similar to.")
 
 Amelia Bellamy-Royds wrote a comprehensive article on scaling SVG, in which she covers things like the fact that `svg` can essentially contain other `svg` with different aspect ratios and behavior, so you can make some parts of an image scale and others not, which is pretty cool and unique to SVG ([http://bkaprt.com/psvg/06-03/](http://bkaprt.com/psvg/06-03/)).
 
@@ -198,7 +198,7 @@ The corresponding CSS could be something like this:
   }
 }
 @media (max-width: 600px) {
-  .disney > \*:not(.d) {
+  .disney > *:not(.d) {
     display: none;
   }
 }
