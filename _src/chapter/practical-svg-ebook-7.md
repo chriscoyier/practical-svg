@@ -164,7 +164,7 @@ Let’s look at another example of real-world usage. The curvy tabs on a previou
 
 With inline SVG, we just define that shape as a `path` once, make it a `symbol`, and `use` it over and over as needed, even altering the style. And even though we were talking about an icon system here, note that this idea works for _any_ SVG you want to use as part of a system.
 
-![Figure](image/Screen_Shot_2016-01-17_at_10.41.12_AM.png "FIG 3.5: Each of these curved tabs is the same path used over and over again with a different fil`l.")
+![Figure](image/Screen_Shot_2016-01-17_at_10.41.12_AM.png "FIG 3.5: Each of these curved tabs is the same path used over and over again with a different fill.")
 
 ## A NOTE ABOUT use AND CSS STYLING
 
@@ -227,12 +227,12 @@ It goes like this:
 
 ```
 .icon-1 {
-  fill: red;       /\* Color #1 \*/
-  color: green;    /\* Color #2 \*/
+  fill: red;       /* Color #1 */
+  color: green;    /* Color #2 */
 }
 .icon-2 {
-  fill: pink;      /\* Color #1 \*/
-  color: orange;   /\* Color #2 \*/
+  fill: pink;      /* Color #1 */
+  color: orange;   /* Color #2 */
 }
 ```
 
